@@ -1,0 +1,78 @@
+{
+  "products": [
+    {
+      "id": 1,
+      "name": "Obsidian Chronograph",
+      "category": "Watches",
+      "price": 450,
+      "primaryImage": "https://images.unsplash.com/photo-1612817159949-195b6eb9e31a?auto=format&fit=crop&q=90&w=1200",
+      "secondaryImage": "https://images.unsplash.com/photo-1542496658-e33a6d0d50f6?auto=format&fit=crop&q=90&w=1200",
+      "description": "Matte black titanium with a sapphire crystal face."
+    },
+    {
+      "id": 2,
+      "name": "Monolith Overcoat",
+      "category": "Clothing",
+      "price": 890,
+      "primaryImage": "https://images.unsplash.com/photo-1496747611176-843222e1e57c?auto=format&fit=crop&q=90&w=1200",
+      "secondaryImage": "https://images.unsplash.com/photo-1509631179647-0177331693ae?auto=format&fit=crop&q=90&w=1200",
+      "description": "Structured wool blend tailored for a sharp, geometric silhouette."
+    },
+    {
+      "id": 3,
+      "name": "Aero-Knit Runners",
+      "category": "Shoes",
+      "price": 220,
+      "primaryImage": "https://images.unsplash.com/photo-1608231387042-66d1773070a5?auto=format&fit=crop&q=90&w=1200",
+      "secondaryImage": "https://images.unsplash.com/photo-1600185365483-26d7a4cc7519?auto=format&fit=crop&q=90&w=1200",
+      "description": "Ultralight breathable mesh with a carbon fiber plate."
+    },
+    {
+      "id": 4,
+      "name": "Phantom Silk Shirt",
+      "category": "Clothing",
+      "price": 180,
+      "primaryImage": "https://images.unsplash.com/photo-1603252109303-2751441dd157?auto=format&fit=crop&q=90&w=1200",
+      "secondaryImage": "https://images.unsplash.com/photo-1617137968427-85924c800a22?auto=format&fit=crop&q=90&w=1200",
+      "description": "Flowing silk with a hidden button placket."
+    },
+    {
+      "id": 5,
+      "name": "Horizon Automatic",
+      "category": "Watches",
+      "price": 1250,
+      "primaryImage": "https://images.unsplash.com/photo-1523170335258-f5ed11844a49?auto=format&fit=crop&q=90&w=1200",
+      "secondaryImage": "https://images.unsplash.com/photo-1539874754764-5a96559165b0?auto=format&fit=crop&q=90&w=1200",
+      "description": "Exposed tourbillon with a minimalist dial."
+    },
+    {
+      "id": 6,
+      "name": "Onyx Leather Boots",
+      "category": "Shoes",
+      "price": 340,
+      "primaryImage": "https://images.unsplash.com/photo-1608256246200-53e635b5b65f?auto=format&fit=crop&q=90&w=1200",
+      "secondaryImage": "https://images.unsplash.com/photo-1549298916-b41d501d3772?auto=format&fit=crop&q=90&w=1200",
+      "description": "Full-grain Italian leather with a chunky Vibram sole."
+    }
+  ],
+  "categories": [
+    {
+      "id": "clothing",
+      "name": "Clothing",
+      "image": "https://images.unsplash.com/photo-1509631179647-0177331693ae?auto=format&fit=crop&q=90&w=1600",
+      "link": "/shop?category=clothing"
+    },
+    {
+      "id": "watches",
+      "name": "Watches",
+      "image": "https://images.unsplash.com/photo-1612817159949-195b6eb9e31a?auto=format&fit=crop&q=90&w=1600",
+      "link": "/shop?category=watches"
+    },
+    {
+      "id": "shoes",
+      "name": "Shoes",
+      "image": "https://images.unsplash.com/photo-1608231387042-66d1773070a5?auto=format&fit=crop&q=90&w=1600",
+      "link": "/shop?category=shoes"
+    }
+  ]
+}
