@@ -53,26 +53,71 @@
       "primaryImage": "/images/ag_showcase_shoe.png",
       "secondaryImage": "/images/ag_showcase_shoe.png",
       "description": "Full-grain Italian leather with a chunky Vibram sole."
+    },
+    {
+      "id": 7,
+      "name": "Overnight Duffel",
+      "category": "Bags",
+      "price": 320,
+      "primaryImage": "/images/ag_bag.png",
+      "secondaryImage": "/images/ag_bag.png",
+      "description": "Premium leather and canvas duffel for weekend escapes."
+    },
+    {
+      "id": 8,
+      "name": "Titanium Carabiner",
+      "category": "Gear",
+      "price": 85,
+      "primaryImage": "/images/ag_accessory.png",
+      "secondaryImage": "/images/ag_accessory.png",
+      "description": "Ultra-lightweight EDC gear carved from solid titanium."
+    },
+    {
+      "id": 9,
+      "name": "Eclipse Aviators",
+      "category": "Eyewear",
+      "price": 280,
+      "primaryImage": "/images/ag_eyewear.png",
+      "secondaryImage": "/images/ag_eyewear.png",
+      "description": "Polarized lenses with a featherweight matte black frame."
     }
   ],
   "categories": [
     {
       "id": "clothing",
       "name": "Clothing",
-      "p1image": "/images/ag_showcase_clothing.png",
+      "image": "/images/ag_showcase_clothing.png",
       "link": "/shop?category=clothing"
     },
     {
       "id": "watches",
       "name": "Watches",
-      "p2image": "/images/ag_showcase_watch.png",
+      "image": "/images/ag_showcase_watch.png",
       "link": "/shop?category=watches"
     },
     {
       "id": "shoes",
       "name": "Shoes",
-      "p3image": "/images/ag_showcase_shoe.png",
+      "image": "/images/ag_showcase_shoe.png",
       "link": "/shop?category=shoes"
+    },
+    {
+      "id": "bags",
+      "name": "Bags",
+      "image": "/images/ag_bag.png",
+      "link": "/shop?category=bags"
+    },
+    {
+      "id": "gear",
+      "name": "Gear",
+      "image": "/images/ag_accessory.png",
+      "link": "/shop?category=gear"
+    },
+    {
+      "id": "eyewear",
+      "name": "Eyewear",
+      "image": "/images/ag_eyewear.png",
+      "link": "/shop?category=eyewear"
     }
   ]
 }

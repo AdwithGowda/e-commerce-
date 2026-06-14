@@ -32,7 +32,7 @@ export default function ShopByCategory() {
             return (
               <Link 
                 key={cat.name} 
-                to="/shop"
+                to={`/shop?category=${cat.name.toLowerCase()}`}
                 className="group flex flex-shrink-0 flex-col items-center gap-6 md:flex-shrink lg:min-w-[140px]"
               >
                 <motion.div 
