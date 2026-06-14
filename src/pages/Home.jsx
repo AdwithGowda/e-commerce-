@@ -1,6 +1,7 @@
 import Hero from '../components/Hero';
 import InfiniteMarquee from '../components/InfiniteMarquee';
 import CategoryShowcase from '../components/CategoryShowcase';
+import ShopByCategory from '../components/ShopByCategory';
 import ProductGrid from '../components/ProductGrid';
 import JournalSection from '../components/JournalSection';
 
@@ -10,11 +11,12 @@ export default function Home() {
       <Hero />
       <InfiniteMarquee />
       <CategoryShowcase />
+      <ShopByCategory />
       <ProductGrid limit={6} title="Latest Drop" />
       <JournalSection />
       
       {/* Footer Placeholder */}
-      <footer className="py-12 border-t border-white/10 text-center text-gray-500 text-sm">
+      <footer className="py-12 border-t border-border-subtle text-center text-text-muted text-sm">
         <p>&copy; {new Date().getFullYear()} AG Fashion. Defining Time & Style.</p>
       </footer>
     </main>

@@ -33,7 +33,7 @@ export default function ProductDetail() {
 
   return (
     <main className="pt-24 pb-12 px-6 max-w-7xl mx-auto min-h-screen">
-      <Link to="/shop" className="inline-flex items-center gap-2 text-gray-400 hover:text-white mt-6 mb-8 transition-colors">
+      <Link to="/shop" className="inline-flex items-center gap-2 text-text-muted hover:text-text-main mt-6 mb-8 transition-colors">
         <ArrowLeft size={16} /> Back to Shop
       </Link>
 
@@ -49,7 +49,7 @@ export default function ProductDetail() {
                 key={idx}
                 onClick={() => setActiveImage(img)}
                 className={`flex-shrink-0 w-20 h-24 rounded-none overflow-hidden border-2 transition-all duration-300 ${
-                  activeImage === img ? 'border-white opacity-100' : 'border-transparent opacity-40 hover:opacity-100 bg-[#0B0C10]'
+                  activeImage === img ? 'border-text-main opacity-100' : 'border-transparent opacity-40 hover:opacity-100 bg-bg-surface'
                 }`}
               >
                 <img src={img} alt={`Thumbnail ${idx+1}`} className="w-full h-full object-cover" />
@@ -63,7 +63,7 @@ export default function ProductDetail() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.3 }}
-            className="flex-1 bg-[#0B0C10] rounded-none overflow-hidden order-1 md:order-2"
+            className="flex-1 bg-bg-surface rounded-none overflow-hidden order-1 md:order-2"
           >
             <img src={activeImage} alt={product.name} className="w-full h-full object-cover" />
           </motion.div>
@@ -76,26 +76,26 @@ export default function ProductDetail() {
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.2 }}
           >
-            <h1 className="text-3xl lg:text-4xl font-heading font-bold mb-1">{product.name}</h1>
-            <p className="text-gray-400 font-medium mb-4 uppercase tracking-wider text-sm">{product.category}</p>
+            <h1 className="text-3xl lg:text-4xl font-heading font-bold mb-1 text-text-main">{product.name}</h1>
+            <p className="text-text-muted font-medium mb-4 uppercase tracking-wider text-sm">{product.category}</p>
 
-            <p className="text-gray-300 leading-relaxed text-sm mb-8">
+            <p className="text-text-muted leading-relaxed text-sm mb-8">
               {product.description}
             </p>
 
-            <div className="mb-8">
+            <div className="mb-8 text-text-main">
               <p className="text-xl font-bold mb-1">${product.price}.00</p>
-              <p className="text-zinc-500 text-sm leading-relaxed">
+              <p className="text-text-muted text-sm leading-relaxed">
                 incl. of taxes<br/>
                 (Also includes all applicable duties)
               </p>
             </div>
             
             {/* Size Selector */}
-            <div className="mb-8">
+            <div className="mb-8 text-text-main">
               <div className="flex justify-between items-center mb-4 text-sm font-bold">
                 <span>Select Size</span>
-                <button className="text-gray-400 hover:text-white transition-colors underline decoration-gray-600 underline-offset-4">Size Guide</button>
+                <button className="text-text-muted hover:text-text-main transition-colors underline decoration-border-subtle underline-offset-4">Size Guide</button>
               </div>
               
               <div className="grid grid-cols-3 gap-3">
@@ -108,8 +108,8 @@ export default function ProductDetail() {
                     }}
                     className={`py-3 rounded-none border text-sm font-bold transition-all duration-200 ${
                       selectedSize === size 
-                        ? 'border-white bg-white text-black' 
-                        : 'border-white/20 text-white hover:border-white'
+                        ? 'border-text-main bg-text-main text-bg-primary' 
+                        : 'border-border-subtle text-text-main hover:border-text-main'
                     }`}
                   >
                     {size}
@@ -125,14 +125,21 @@ export default function ProductDetail() {
             {/* Action Buttons */}
             <div className="flex flex-col gap-4 mb-10">
               <button 
-                onClick={handleAddToCart}
-                className="w-full bg-white text-black font-bold uppercase tracking-[0.2em] py-4 rounded-none flex justify-center items-center hover:bg-gray-200 transition-colors"
+                className="w-full bg-text-main text-bg-primary font-bold uppercase tracking-[0.2em] py-4 rounded-none flex justify-center items-center hover:opacity-90 transition-opacity"
               >
-                ADD TO CART
+                BUY NOW
               </button>
-              <button className="w-full border border-white text-white font-bold uppercase tracking-[0.2em] py-4 rounded-none flex justify-center items-center hover:bg-white/10 transition-colors">
-                WISHLIST
-              </button>
+              <div className="grid grid-cols-2 gap-4 w-full">
+                <button 
+                  onClick={handleAddToCart}
+                  className="w-full border border-border-subtle text-text-main font-bold uppercase tracking-[0.1em] py-4 rounded-none flex justify-center items-center hover:border-text-main transition-colors text-xs sm:text-sm"
+                >
+                  ADD TO CART
+                </button>
+                <button className="w-full border border-border-subtle text-text-main font-bold uppercase tracking-[0.1em] py-4 rounded-none flex justify-center items-center hover:border-text-main transition-colors text-xs sm:text-sm">
+                  WISHLIST
+                </button>
+              </div>
             </div>
             
           </motion.div>
