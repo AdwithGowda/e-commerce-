@@ -3,6 +3,7 @@ import { ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import data from '../data/data.json';
 import agw2 from '../assets/agw2.png';
+import agb2 from '../assets/agb2.png';
 
 const { categories, products } = data;
 
@@ -110,11 +111,18 @@ export default function CategoryShowcase() {
             transition={{ duration: 0.5, ease: 'easeOut' }}
             className="relative h-[100px] w-[100px] flex items-center justify-center"
           >
-            <img
-              src={agw2}
-              alt="Brand Showcase"
-              className="absolute inset-0 h-full w-full object-cover transition-all duration-500 hover:scale-110"
-            />
+            <>
+              <img
+                src={agb2}
+                alt="Brand Showcase"
+                className="absolute inset-0 h-full w-full object-contain transition-all duration-500 hover:scale-110 dark:hidden"
+              />
+              <img
+                src={agw2}
+                alt="Brand Showcase"
+                className="absolute inset-0 h-full w-full object-contain transition-all duration-500 hover:scale-110 hidden dark:block"
+              />
+            </>
           </motion.div>
         </div>
 

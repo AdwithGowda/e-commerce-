@@ -3,11 +3,14 @@ import { ShoppingBag, Search, User, Menu, X, Sun, Moon } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { useTheme } from './ThemeProvider';
+import agw2 from '../assets/agw2.png';
+import agb2 from '../assets/agb2.png';
 
 export default function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const { theme, toggleTheme } = useTheme();
   const navItems = [
+    { label: 'Home', to: '/' },
     { label: 'Shop', to: '/shop' },
     { label: 'Collections', to: '/#collections' },
     { label: 'Journal', to: '/#journal' },
@@ -32,8 +35,17 @@ export default function Navbar() {
         </nav>
 
         {/* Logo */}
-        <Link to="/" className="text-3xl font-heading font-bold tracking-tighter text-text-main">
-          AG
+        <Link to="/" className="relative h-7 sm:h-8 w-14 sm:w-16 flex items-center justify-center transition-transform hover:scale-105">
+          <img
+            src={agb2}
+            alt="AG Logo"
+            className="absolute inset-0 h-full w-full object-contain dark:hidden"
+          />
+          <img
+            src={agw2}
+            alt="AG Logo"
+            className="absolute inset-0 h-full w-full object-contain hidden dark:block"
+          />
         </Link>
 
         {/* Right Icons */}

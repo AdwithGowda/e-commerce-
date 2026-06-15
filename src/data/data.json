@@ -4,7 +4,7 @@
       "id": 1,
       "name": "Obsidian Chronograph",
       "category": "Watches",
-      "price": 450,
+      "price": 37600,
       "primaryImage": "/images/ag_prod_watch1_pri.png",
       "secondaryImage": "/images/ag_prod_watch1_sec.png",
       "description": "Matte black titanium with a sapphire crystal face."
@@ -13,7 +13,7 @@
       "id": 2,
       "name": "Monolith Overcoat",
       "category": "Clothing",
-      "price": 890,
+      "price": 74300,
       "primaryImage": "/images/ag_showcase_clothing.png",
       "secondaryImage": "/images/ag_outerwear.png",
       "description": "Structured wool blend tailored for a sharp, geometric silhouette."
@@ -22,7 +22,7 @@
       "id": 3,
       "name": "Aero-Knit Runners",
       "category": "Shoes",
-      "price": 220,
+      "price": 18400,
       "primaryImage": "/images/ag_sneaker.png",
       "secondaryImage": "/images/ag_showcase_shoe.png",
       "description": "Ultralight breathable mesh with a carbon fiber plate."
@@ -31,68 +31,167 @@
       "id": 4,
       "name": "Phantom Silk Shirt",
       "category": "Clothing",
-      "price": 180,
-      "primaryImage": "/images/ag_apparel.png",
-      "secondaryImage": "/images/ag_apparel.png",
+      "price": 15000,
+      "primaryImage": "/images/ag_silk_shirt.png",
+      "secondaryImage": "/images/ag_silk_shirt.png",
       "description": "Flowing silk with a hidden button placket."
     },
     {
       "id": 5,
       "name": "Horizon Automatic",
       "category": "Watches",
-      "price": 1250,
-      "primaryImage": "/images/ag_showcase_watch.png",
-      "secondaryImage": "/images/ag_showcase_watch.png",
+      "price": 104400,
+      "primaryImage": "/images/ag_horizon_watch.png",
+      "secondaryImage": "/images/ag_horizon_watch.png",
       "description": "Exposed tourbillon with a minimalist dial."
     },
     {
       "id": 6,
       "name": "Onyx Leather Boots",
       "category": "Shoes",
-      "price": 340,
-      "primaryImage": "/images/ag_showcase_shoe.png",
-      "secondaryImage": "/images/ag_showcase_shoe.png",
+      "price": 28400,
+      "primaryImage": "/images/ag_leather_boots.png",
+      "secondaryImage": "/images/ag_leather_boots.png",
       "description": "Full-grain Italian leather with a chunky Vibram sole."
     },
     {
       "id": 7,
       "name": "Overnight Duffel",
       "category": "Bags",
-      "price": 320,
-      "primaryImage": "/images/ag_bag.png",
-      "secondaryImage": "/images/ag_bag.png",
+      "price": 26700,
+      "primaryImage": "/images/ag_duffel_bag.png",
+      "secondaryImage": "/images/ag_duffel_bag.png",
       "description": "Premium leather and canvas duffel for weekend escapes."
     },
     {
       "id": 8,
       "name": "Titanium Carabiner",
       "category": "Gear",
-      "price": 85,
-      "primaryImage": "/images/ag_accessory.png",
-      "secondaryImage": "/images/ag_accessory.png",
+      "price": 7100,
+      "primaryImage": "/images/ag_carabiner.png",
+      "secondaryImage": "/images/ag_carabiner.png",
       "description": "Ultra-lightweight EDC gear carved from solid titanium."
     },
     {
       "id": 9,
       "name": "Eclipse Aviators",
       "category": "Eyewear",
-      "price": 280,
+      "price": 23400,
+      "primaryImage": "/images/ag_aviators.png",
+      "secondaryImage": "/images/ag_aviators.png",
+      "description": "Polarized lenses with a featherweight matte black frame."
+    },
+    {
+      "id": 10,
+      "name": "Apex Titanium Ring",
+      "category": "Gear",
+      "price": 12500,
+      "primaryImage": "/images/ag_ring.png",
+      "secondaryImage": "/images/ag_ring.png",
+      "description": "Solid matte black titanium with precision inner curve."
+    },
+    {
+      "id": 11,
+      "name": "Vanguard Leather Jacket",
+      "category": "Clothing",
+      "price": 79300,
+      "primaryImage": "/images/ag_leather_jacket.png",
+      "secondaryImage": "/images/ag_leather_jacket.png",
+      "description": "Premium motorcycle jacket with an aggressive, tailored fit."
+    },
+    {
+      "id": 12,
+      "name": "Stealth Backpack",
+      "category": "Bags",
+      "price": 20000,
+      "primaryImage": "/images/ag_stealth_backpack.png",
+      "secondaryImage": "/images/ag_stealth_backpack.png",
+      "description": "Minimalist, waterproof urban pack with hidden compartments."
+    },
+    {
+      "id": 13,
+      "name": "Tactical Carabiner",
+      "category": "Gear",
+      "price": 3800,
+      "primaryImage": "/images/ag_accessory.png",
+      "secondaryImage": "/images/ag_accessory.png",
+      "description": "Heavy-duty matte black carabiner for everyday carry."
+    },
+    {
+      "id": 14,
+      "name": "Essential Tee",
+      "category": "Clothing",
+      "price": 5000,
+      "primaryImage": "/images/ag_apparel.png",
+      "secondaryImage": "/images/ag_apparel.png",
+      "description": "Ultra-soft cotton blend t-shirt with a relaxed fit."
+    },
+    {
+      "id": 15,
+      "name": "Utility Tote",
+      "category": "Bags",
+      "price": 15000,
+      "primaryImage": "/images/ag_bag.png",
+      "secondaryImage": "/images/ag_bag.png",
+      "description": "Durable canvas tote bag with reinforced leather straps."
+    },
+    {
+      "id": 16,
+      "name": "Classic Wayfarers",
+      "category": "Eyewear",
+      "price": 17500,
       "primaryImage": "/images/ag_eyewear.png",
       "secondaryImage": "/images/ag_eyewear.png",
-      "description": "Polarized lenses with a featherweight matte black frame."
+      "description": "Timeless silhouette with UV400 polarized dark lenses."
+    },
+    {
+      "id": 17,
+      "name": "Minimalist Timepiece",
+      "category": "Watches",
+      "price": 45900,
+      "primaryImage": "/images/ag_showcase_watch.png",
+      "secondaryImage": "/images/ag_showcase_watch.png",
+      "description": "Clean, unbranded watch face with a premium leather band."
+    },
+    {
+      "id": 18,
+      "name": "Alpine Outerwear",
+      "category": "Clothing",
+      "price": 35100,
+      "primaryImage": "/images/ag_outerwear.png",
+      "secondaryImage": "/images/ag_outerwear.png",
+      "description": "Weather-resistant, insulated outerwear piece for extreme conditions."
+    },
+    {
+      "id": 19,
+      "name": "Elevate Runners",
+      "category": "Shoes",
+      "price": 13400,
+      "primaryImage": "/images/ag_showcase_shoe.png",
+      "secondaryImage": "/images/ag_showcase_shoe.png",
+      "description": "Lightweight performance running shoes with optimal cushioning."
+    },
+    {
+      "id": 20,
+      "name": "Acetate Square Sunglasses",
+      "category": "Eyewear",
+      "price": 26500,
+      "primaryImage": "/images/ag_square_sunglasses.png",
+      "secondaryImage": "/images/ag_square_sunglasses.png",
+      "description": "Premium thick-framed translucent acetate sunglasses."
     }
   ],
   "categories": [
     {
       "id": "clothing",
       "name": "Clothing",
-      "image": "/images/ag_showcase_clothing.png",
+      "image": "/images/ag_silk_shirt.png",
       "link": "/shop?category=clothing"
     },
     {
       "id": "watches",
       "name": "Watches",
-      "image": "/images/ag_showcase_watch.png",
+      "image": "/images/ag_horizon_watch.png",
       "link": "/shop?category=watches"
     },
     {
@@ -104,19 +203,19 @@
     {
       "id": "bags",
       "name": "Bags",
-      "image": "/images/ag_bag.png",
+      "image": "/images/ag_duffel_bag.png",
       "link": "/shop?category=bags"
     },
     {
       "id": "gear",
       "name": "Gear",
-      "image": "/images/ag_accessory.png",
+      "image": "/images/ag_ring.png",
       "link": "/shop?category=gear"
     },
     {
       "id": "eyewear",
       "name": "Eyewear",
-      "image": "/images/ag_eyewear.png",
+      "image": "/images/ag_aviators.png",
       "link": "/shop?category=eyewear"
     }
   ]

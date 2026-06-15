@@ -28,8 +28,8 @@ export default function ProductDetail() {
     return <div className="pt-32 text-center text-xl">Product not found</div>;
   }
 
-  // To support switching thumbnails, we gather the available images
-  const images = [product.primaryImage, product.secondaryImage].filter(Boolean);
+  // To support switching thumbnails, we gather the available images and deduplicate them
+  const images = [...new Set([product.primaryImage, product.secondaryImage].filter(Boolean))];
 
   return (
     <main className="pt-24 pb-12 px-6 max-w-7xl mx-auto min-h-screen">
@@ -42,20 +42,7 @@ export default function ProductDetail() {
         {/* Left Side: Images */}
         <div className="w-full lg:w-3/5 flex flex-col md:flex-row gap-4 h-[60vh] lg:h-[80vh]">
           
-          {/* Thumbnails Column */}
-          <div className="flex md:flex-col gap-3 overflow-x-auto md:overflow-y-auto no-scrollbar pb-2 md:pb-0 order-2 md:order-1">
-            {images.map((img, idx) => (
-              <button 
-                key={idx}
-                onClick={() => setActiveImage(img)}
-                className={`flex-shrink-0 w-20 h-24 rounded-none overflow-hidden border-2 transition-all duration-300 ${
-                  activeImage === img ? 'border-text-main opacity-100' : 'border-transparent opacity-40 hover:opacity-100 bg-bg-surface'
-                }`}
-              >
-                <img src={img} alt={`Thumbnail ${idx+1}`} className="w-full h-full object-cover" />
-              </button>
-            ))}
-          </div>
+
 
           {/* Main Image */}
           <motion.div 
@@ -84,7 +71,7 @@ export default function ProductDetail() {
             </p>
 
             <div className="mb-8 text-text-main">
-              <p className="text-xl font-bold mb-1">${product.price}.00</p>
+              <p className="text-xl font-bold mb-1">₹{product.price}.00</p>
               <p className="text-text-muted text-sm leading-relaxed">
                 incl. of taxes<br/>
                 (Also includes all applicable duties)

@@ -2,15 +2,9 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import data from '../data/data.json';
 
-const shopCategories = [
-  { name: 'SNEAKERS', image: '/images/ag_sneaker.png' },
-  { name: 'APPAREL', image: '/images/ag_apparel.png' },
-  { name: 'BAGS', image: '/images/ag_bag.png' },
-  { name: 'ACCESSORIES', image: '/images/ag_accessory.png' }, 
-  { name: 'OUTERWEAR', image: '/images/ag_outerwear.png' },
-  { name: 'EYEWEAR', image: '/images/ag_eyewear.png' },
-];
+const { categories } = data;
 
 export default function ShopByCategory() {
   return (
@@ -27,12 +21,11 @@ export default function ShopByCategory() {
 
         {/* Category Scroll/Grid */}
         <div className="flex w-full gap-6 overflow-x-auto pb-8 pt-4 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden md:grid md:grid-cols-6 md:gap-8 md:overflow-visible lg:flex lg:justify-between lg:gap-10">
-          {shopCategories.map((cat, idx) => {
-            const displayName = cat.name === 'ACCESSORIES' ? 'GEAR' : cat.name;
+          {categories.map((cat, idx) => {
             return (
               <Link 
-                key={cat.name} 
-                to={`/shop?category=${cat.name.toLowerCase()}`}
+                key={cat.id} 
+                to={cat.link}
                 className="group flex flex-shrink-0 flex-col items-center gap-6 md:flex-shrink lg:min-w-[140px]"
               >
                 <motion.div 
@@ -54,13 +47,13 @@ export default function ShopByCategory() {
                   ) : (
                     <div className="absolute inset-0 flex items-center justify-center bg-[#F5F5F0] dark:bg-zinc-800 transition-colors duration-500 group-hover:bg-[#EBEBE6] dark:group-hover:bg-zinc-700">
                       <span className="font-serif text-3xl italic text-text-muted transition-colors duration-500 group-hover:text-text-main">
-                        {displayName}
+                        {cat.name}
                       </span>
                     </div>
                   )}
                 </motion.div>
                 <span className="text-[11px] font-bold uppercase tracking-[0.2em] text-text-main transition duration-300">
-                  {displayName}
+                  {cat.name}
                 </span>
               </Link>
             );

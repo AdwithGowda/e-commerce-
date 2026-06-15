@@ -37,7 +37,7 @@ export default function IntroSplash() {
             muted
             playsInline
             onEnded={() => setIsVisible(false)}
-            className="absolute inset-0 h-full w-full object-cover"
+            className="absolute inset-0 h-full w-full object-contain"
           />
         </motion.div>
       )}
