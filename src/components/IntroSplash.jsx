@@ -26,17 +26,20 @@ export default function IntroSplash() {
     <AnimatePresence>
       {isVisible && (
         <motion.div
-          initial={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          transition={{ duration: 1, ease: 'easeInOut' }}
-          className="fixed inset-0 z-[10000] flex items-center justify-center bg-black"
+          initial={{ backgroundColor: 'rgba(0,0,0,1)' }}
+          exit={{ backgroundColor: 'rgba(0,0,0,0)', pointerEvents: 'none' }}
+          transition={{ duration: 1.2, ease: [0.76, 0, 0.24, 1] }}
+          className="fixed inset-0 z-[10000] flex items-center justify-center"
         >
-          <video
+          <motion.video
             src={introVideo}
             autoPlay
             muted
             playsInline
             onEnded={() => setIsVisible(false)}
+            initial={{ scale: 1, y: 0, opacity: 1 }}
+            exit={{ scale: 0.04, y: 'calc(-50vh + 64px)', opacity: 0 }}
+            transition={{ duration: 1.2, ease: [0.76, 0, 0.24, 1] }}
             className="absolute inset-0 h-full w-full object-contain"
           />
         </motion.div>
