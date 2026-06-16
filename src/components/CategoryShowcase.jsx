@@ -5,156 +5,166 @@ import { Link } from 'react-router-dom';
 import data from '../data/data.json';
 import agw2 from '../assets/agw2.png';
 import agb2 from '../assets/agb2.png';
+import videoSrc1 from '../assets/AG_ads.mp4';
+import videoSrc2 from '../assets/AG_ads2.mp4';
+import videoSrc3 from '../assets/AG_ads3.mp4';
+
+const backgroundVideos = [videoSrc1, videoSrc2, videoSrc3];
 
 const { categories, products } = data;
-
 
 
 const promoBanners = [
   {
     id: 1,
-    eyebrow: 'Matte black / precision objects',
-    title: 'The Obsidian Series',
-    subtitle: 'Stealth textures, dark titanium, and high-contrast pieces made for after-dark utility.',
-    image: '/images/ag_showcase_watch.png', 
-    link: '/shop?category=watches',
-    showBanks: false,
-  },
-  {
-    id: 2,
-    eyebrow: 'Structured wool / sharp silhouettes',
-    title: 'The Monolith Edit',
-    subtitle: 'Weight, proportion, and architectural tailoring built around a quieter winter uniform.',
-    image: '/images/ag_showcase_clothing.png',
-    link: '/shop?category=clothing',
-    showBanks: false,
-  },
-  {
-    id: 3,
     eyebrow: 'Technical weave / zero gravity',
     title: 'The Aero-Knit Drop',
     subtitle: 'Breathable, hyper-light engineered runners built for movement and minimalist styling.',
     image: '/images/ag_showcase_shoe.png',
     link: '/shop?category=shoes',
     showBanks: false,
+  },
+  {
+    id: 2,
+    eyebrow: 'Matte black / precision objects',
+    title: 'Obsidian Chronograph',
+    subtitle: 'Matte black titanium with a sapphire crystal face.',
+    image: '/images/ag_prod_watch1_pri.png', 
+    link: '/shop?category=watches',
+    showBanks: false,
+  },
+  {
+    id: 3,
+    eyebrow: 'Everyday comfort / relaxed fit',
+    title: 'Essential Tee',
+    subtitle: 'Ultra-soft cotton blend t-shirt with a relaxed fit.',
+    image: '/images/ag_apparel.png',
+    link: '/shop?category=clothing',
+    showBanks: false,
   }
 ];
 
 export default function CategoryShowcase() {
-  const [currentBanner, setCurrentBanner] = useState(0);
+  const [currentIndex, setCurrentIndex] = useState(0);
 
   const nextBanner = () => {
-    setCurrentBanner((prev) => (prev + 1) % promoBanners.length);
+    setCurrentIndex((prev) => (prev + 1) % promoBanners.length);
   };
 
   const prevBanner = () => {
-    setCurrentBanner((prev) => (prev === 0 ? promoBanners.length - 1 : prev - 1));
+    setCurrentIndex((prev) => (prev === 0 ? promoBanners.length - 1 : prev - 1));
   };
 
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setCurrentBanner((prev) => (prev + 1) % promoBanners.length);
-    }, 5000);
-    return () => clearInterval(timer);
-  }, [currentBanner]);
+  const handleVideoEnded = () => {
+    nextBanner();
+  };
+
   return (
-    <section id="collections" className="px-6 pt-24 pb-8">
-      <div className="mx-auto max-w-7xl">
+    <section id="collections" className="relative px-6 pt-24 pb-8 overflow-hidden">
+      {/* Background Video */}
+      <div className="absolute inset-0 -z-30 h-full w-full">
+        <video
+          key={backgroundVideos[currentIndex % backgroundVideos.length]}
+          autoPlay
+          muted
+          playsInline
+          onEnded={handleVideoEnded}
+          className="h-full w-full object-cover object-center"
+          src={backgroundVideos[currentIndex % backgroundVideos.length]}
+        />
+      </div>
 
-        {/* Wide Promotional Banner Carousel */}
-        <div className="my-24 relative w-full h-[650px] md:h-[450px] group flex items-center">
+      {/* Dark Overlay for Text Readability */}
+      <div className="absolute inset-0 -z-20 bg-black/60" />
 
-          <button 
-            onClick={prevBanner}
-            className="absolute left-2 md:left-4 top-1/2 -translate-y-1/2 z-20 p-2 text-gray-500 hover:text-black dark:text-gray-400 dark:hover:text-white transition-colors bg-white/40 dark:bg-black/40 backdrop-blur-md rounded-full shadow-sm"
-          >
-            <ChevronLeft size={24} className="md:w-8 md:h-8" strokeWidth={1.5} />
-          </button>
+      <div className="mx-auto max-w-7xl relative z-10">
 
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={currentBanner}
-              initial={{ opacity: 0, x: 20 }}
-              animate={{ opacity: 1, x: 0 }}
-              exit={{ opacity: 0, x: -20 }}
-              transition={{ duration: 0.5, ease: "easeInOut" }}
-              className="absolute inset-0 w-full h-full flex flex-col md:flex-row"
-            >
-              <div className="flex-1 flex flex-col justify-center px-12 py-10 pt-16 md:p-16 lg:px-24 z-10 space-y-2 md:space-y-4 text-center md:text-left items-center md:items-start">
-                <p className="text-sm md:text-xl text-gray-500 dark:text-gray-400 font-light uppercase tracking-widest">
-                  {promoBanners[currentBanner].eyebrow}
+        {/* Promotional Showcase Layout */}
+        <div className="mt-16 md:mt-24 relative w-full flex flex-col justify-center min-h-[400px]">
+          
+          {/* Top Area: Animated Text & Details */}
+          <div className="w-full relative min-h-[350px] flex items-center">
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={currentIndex}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -20 }}
+                transition={{ duration: 0.5, ease: "easeInOut" }}
+                className="absolute inset-0 flex flex-col justify-center items-center md:items-start text-center md:text-left space-y-4 md:space-y-6 max-w-2xl"
+              >
+                <p className="text-sm md:text-xl text-white/70 font-light uppercase tracking-widest drop-shadow-sm">
+                  {promoBanners[currentIndex].eyebrow}
                 </p>
-                <h2 className="text-4xl md:text-6xl font-bold text-gray-900 dark:text-white tracking-tight drop-shadow-sm dark:drop-shadow-md">
-                  {promoBanners[currentBanner].title}
+                <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white tracking-tight drop-shadow-md">
+                  {promoBanners[currentIndex].title}
                 </h2>
-                <p className="text-base md:text-lg text-gray-700 dark:text-gray-300 max-w-md font-light leading-relaxed">
-                  {promoBanners[currentBanner].subtitle}
+                <p className="text-base md:text-lg text-white/80 max-w-md font-light leading-relaxed drop-shadow-sm">
+                  {promoBanners[currentIndex].subtitle}
                 </p>
                 
-                {promoBanners[currentBanner].showBanks && (
-                  <div className="pt-4 md:pt-6 flex flex-col md:flex-row items-center gap-3">
-                    <div className="flex items-center gap-2 bg-white dark:bg-white/10 px-3 py-1.5 rounded-sm shadow-sm border border-gray-200 dark:border-white/20 text-xs font-bold text-gray-800 dark:text-white">
-                      <span className="text-[#f16522]">BOBCARD</span>
-                      <span className="text-gray-300 dark:text-gray-500">|</span>
-                      <span className="text-[#db0011]">HSBC</span>
-                    </div>
-                    <div className="flex flex-col text-center md:text-left">
-                      <span className="text-xs md:text-sm font-bold text-gray-900 dark:text-white">Up to 10% Instant Discount*</span>
-                      <span className="text-[10px] text-gray-500 dark:text-gray-400">*T&C apply</span>
-                    </div>
-                  </div>
-                )}
-              </div>
-              
-              <div className="flex-1 h-full flex items-center justify-center relative z-10 p-2 pb-16 md:py-2 md:pr-14 md:pl-4 lg:pr-16 lg:pl-6">
-                <Link 
-                  to={promoBanners[currentBanner].link}
-                  className="w-full h-full relative overflow-hidden group-hover:scale-[1.02] transition-transform duration-500 drop-shadow-2xl block cursor-pointer"
-                  style={{ clipPath: 'polygon(40px 0, 100% 0, 100% calc(100% - 40px), calc(100% - 40px) 100%, 0 100%, 0 40px)' }}
-                >
-                  <img 
-                    src={promoBanners[currentBanner].image} 
-                    alt={promoBanners[currentBanner].title}
-                    className="w-full h-full object-cover transition duration-700 hover:scale-105"
-                  />
-                  <div className="absolute right-6 top-6 text-xs font-bold tracking-[0.2em] text-white drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)] mix-blend-overlay">
-                    [0{currentBanner + 1}]
-                  </div>
-                </Link>
-              </div>
-            </motion.div>
-          </AnimatePresence>
+                <div className="pt-2">
+                  <Link 
+                    to={promoBanners[currentIndex].link}
+                    className="group inline-flex items-center gap-3 px-8 py-4 bg-white/10 hover:bg-white/20 border border-white/20 text-white font-bold uppercase tracking-[0.2em] text-xs sm:text-sm transition-all duration-300 backdrop-blur-md rounded-full shadow-[0_4px_14px_rgba(0,0,0,0.1)] hover:shadow-[0_6px_20px_rgba(255,255,255,0.1)]"
+                  >
+                    View Details 
+                    <ArrowRight size={18} className="transition-transform group-hover:translate-x-1" />
+                  </Link>
+                </div>
+              </motion.div>
+            </AnimatePresence>
+          </div>
 
-          <button 
-            onClick={nextBanner}
-            className="absolute right-2 md:right-4 top-1/2 -translate-y-1/2 z-20 p-2 text-gray-500 hover:text-black dark:text-gray-400 dark:hover:text-white transition-colors bg-white/40 dark:bg-black/40 backdrop-blur-md rounded-full shadow-sm"
-          >
-            <ChevronRight size={24} className="md:w-8 md:h-8" strokeWidth={1.5} />
-          </button>
         </div>
 
-        {/* Small Brand Logo/Image */}
-        <div className="flex justify-center w-full mt-16">
-          <motion.div 
-            initial={{ opacity: 0, scale: 0.8 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, ease: 'easeOut' }}
-            className="relative h-[100px] w-[100px] flex items-center justify-center"
-          >
-            <>
-              <img
-                src={agb2}
-                alt="Brand Showcase"
-                className="absolute inset-0 h-full w-full object-contain transition-all duration-500 hover:scale-110 dark:hidden"
-              />
+        {/* Bottom Area: Logo and Thumbnails */}
+        <div className="relative w-full flex flex-col-reverse md:flex-row items-center justify-between gap-10 mt-12 md:mt-24">
+          
+          {/* Spacer for perfect center alignment on desktop */}
+          <div className="hidden md:block flex-1"></div>
+
+          {/* Small Brand Logo/Image (Centered) */}
+          <div className="flex-1 flex justify-center items-end">
+            <motion.div 
+              initial={{ opacity: 0, scale: 0.8 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, ease: 'easeOut' }}
+              className="relative h-[80px] w-[80px] md:h-[100px] md:w-[100px]"
+            >
               <img
                 src={agw2}
                 alt="Brand Showcase"
-                className="absolute inset-0 h-full w-full object-contain transition-all duration-500 hover:scale-110 hidden dark:block"
+                className="absolute inset-0 h-full w-full object-contain transition-all duration-500 hover:scale-110 drop-shadow-lg"
               />
-            </>
-          </motion.div>
+            </motion.div>
+          </div>
+
+          {/* Right Side: Horizontal Image Thumbnails */}
+          <div className="flex-1 flex justify-center md:justify-end gap-3 md:gap-4 lg:gap-6 z-10 w-full -mr-12 md:-mr-16 lg:-mr-24">
+            {promoBanners.map((banner, idx) => (
+              <button
+                key={banner.id}
+                onClick={() => setCurrentIndex(idx)}
+                className={`relative overflow-hidden w-20 h-32 md:w-28 md:h-40 lg:w-36 lg:h-52 transition-all duration-500 rounded-lg group ${
+                  currentIndex === idx 
+                    ? 'ring-2 ring-white scale-105 shadow-2xl opacity-100 z-10' 
+                    : 'opacity-50 hover:opacity-100 hover:scale-100 scale-95 hover:z-20 cursor-pointer'
+                }`}
+              >
+                <img 
+                  src={banner.image} 
+                  alt={banner.title}
+                  className="w-full h-full object-cover transition duration-700 group-hover:scale-110"
+                />
+                {currentIndex === idx && (
+                  <div className="absolute inset-0 bg-black/10 mix-blend-overlay"></div>
+                )}
+              </button>
+            ))}
+          </div>
+
         </div>
 
       </div>
