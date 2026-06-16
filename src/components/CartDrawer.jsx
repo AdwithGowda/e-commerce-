@@ -100,7 +100,7 @@ export default function CartDrawer() {
                         </div>
                         
                         <p className="text-sm font-bold text-gray-900 dark:text-white">
-                          ${(item.price * item.quantity).toLocaleString()}
+                          ₹{(item.price * item.quantity).toLocaleString()}
                         </p>
                       </div>
                     </div>
@@ -114,7 +114,7 @@ export default function CartDrawer() {
               <div className="p-6 bg-gray-50 dark:bg-black/50 border-t border-gray-200 dark:border-white/10">
                 <div className="flex justify-between items-center mb-6">
                   <span className="text-sm text-gray-500 dark:text-gray-400 uppercase tracking-widest font-medium">Subtotal</span>
-                  <span className="text-xl font-bold text-gray-900 dark:text-white">${cartTotal.toLocaleString()}</span>
+                  <span className="text-xl font-bold text-gray-900 dark:text-white">₹{cartTotal.toLocaleString()}</span>
                 </div>
                 <button className="w-full bg-gray-900 dark:bg-white text-white dark:text-black py-4 rounded-full font-bold uppercase tracking-widest text-xs hover:bg-black dark:hover:bg-gray-200 transition-colors shadow-xl">
                   Proceed to Checkout
