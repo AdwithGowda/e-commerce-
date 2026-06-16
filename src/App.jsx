@@ -4,6 +4,8 @@ import Navbar from './components/Navbar';
 import Home from './pages/Home';
 import Shop from './pages/Shop';
 import ProductDetail from './pages/ProductDetail';
+import { CartProvider } from './contexts/CartContext';
+import CartDrawer from './components/CartDrawer';
 
 // Helper to scroll to top on route change
 function ScrollToTop() {
@@ -30,18 +32,21 @@ import IntroSplash from './components/IntroSplash';
 function App() {
   return (
     <ThemeProvider>
-      <IntroSplash />
-      <Router>
-        <ScrollToTop />
-        <Navbar />
-        <div className="min-h-screen font-body selection:bg-accent selection:text-white">
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/shop" element={<Shop />} />
-            <Route path="/product/:id" element={<ProductDetail />} />
-          </Routes>
-        </div>
-      </Router>
+      <CartProvider>
+        <IntroSplash />
+        <Router>
+          <ScrollToTop />
+          <Navbar />
+          <CartDrawer />
+          <div className="min-h-screen font-body selection:bg-accent selection:text-white">
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/shop" element={<Shop />} />
+              <Route path="/product/:id" element={<ProductDetail />} />
+            </Routes>
+          </div>
+        </Router>
+      </CartProvider>
     </ThemeProvider>
   );
 }

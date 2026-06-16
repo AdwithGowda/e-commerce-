@@ -4,11 +4,13 @@ import data from '../data/data.json';
 const { products } = data;
 import { ArrowLeft, ShoppingCart, Heart } from 'lucide-react';
 import { motion } from 'framer-motion';
+import { useCart } from '../contexts/CartContext';
 
 export default function ProductDetail() {
   const { id } = useParams();
   const product = products.find(p => p.id === parseInt(id));
   
+  const { addToCart } = useCart();
   const [activeImage, setActiveImage] = useState(product?.primaryImage);
   const [selectedSize, setSelectedSize] = useState(null);
   const [showError, setShowError] = useState(false);
@@ -18,7 +20,7 @@ export default function ProductDetail() {
       setShowError(true);
     } else {
       setShowError(false);
-      // Proceed to cart
+      addToCart({ ...product, id: `${product.id}-${selectedSize}`, originalId: product.id, size: selectedSize });
     }
   };
 

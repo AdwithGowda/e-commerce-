@@ -3,12 +3,14 @@ import { ShoppingBag, Search, User, Menu, X, Sun, Moon } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { useTheme } from './ThemeProvider';
+import { useCart } from '../contexts/CartContext';
 import agw2 from '../assets/agw2.png';
 import agb2 from '../assets/agb2.png';
 
 export default function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const { theme, toggleTheme } = useTheme();
+  const { cartCount, toggleCart } = useCart();
   const navItems = [
     { label: 'Home', to: '/' },
     { label: 'Shop', to: '/shop' },
@@ -48,9 +50,9 @@ export default function Navbar() {
           />
         </Link>
 
-        {/* Right Icons */}
-        <div className="hidden md:flex items-center gap-6">
-          <button onClick={toggleTheme} className="text-text-muted hover:text-text-main transition-colors">
+        {/* Right Icons & Mobile Controls */}
+        <div className="flex items-center gap-4 sm:gap-5 md:gap-6">
+          <button onClick={toggleTheme} className="hidden md:block text-text-muted hover:text-text-main transition-colors">
             {theme === 'dark' ? <Sun size={20} strokeWidth={1.5} /> : <Moon size={20} strokeWidth={1.5} />}
           </button>
           <button className="text-text-muted hover:text-text-main transition-colors">
@@ -59,25 +61,32 @@ export default function Navbar() {
           <button className="text-text-muted hover:text-text-main transition-colors">
             <User size={20} strokeWidth={1.5} />
           </button>
-          <button className="text-text-muted hover:text-text-main transition-colors relative">
+          <button 
+            className="text-text-muted hover:text-text-main transition-colors relative"
+            onClick={toggleCart}
+          >
             <ShoppingBag size={20} strokeWidth={1.5} />
-            <span className="absolute -top-1 -right-1 bg-highlight text-white text-[10px] font-bold w-4 h-4 rounded-full flex items-center justify-center">
-              2
-            </span>
+            <AnimatePresence>
+              {cartCount > 0 && (
+                <motion.span 
+                  initial={{ scale: 0 }}
+                  animate={{ scale: 1 }}
+                  exit={{ scale: 0 }}
+                  className="absolute -top-1 -right-1 bg-blue-600 text-white text-[10px] font-bold w-4 h-4 rounded-full flex items-center justify-center"
+                >
+                  {cartCount}
+                </motion.span>
+              )}
+            </AnimatePresence>
+          </button>
+
+          <button 
+            className="md:hidden text-text-muted hover:text-text-main transition-colors ml-1"
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+          >
+            {isMobileMenuOpen ? <X size={24} strokeWidth={1.5} /> : <Menu size={24} strokeWidth={1.5} />}
           </button>
         </div>
-
-        {/* Mobile Menu Toggle */}
-        <button 
-          className="md:hidden text-text-muted hover:text-text-main flex items-center gap-4"
-        >
-          <div onClick={(e) => { e.preventDefault(); toggleTheme(); }}>
-            {theme === 'dark' ? <Sun size={20} /> : <Moon size={20} />}
-          </div>
-          <div onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}>
-            {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
-          </div>
-        </button>
 
       </div>
 
@@ -101,6 +110,14 @@ export default function Navbar() {
                   {item.label}
                 </Link>
               ))}
+              
+              <button 
+                onClick={() => { toggleTheme(); setIsMobileMenuOpen(false); }}
+                className="flex items-center gap-3 text-lg font-medium text-text-muted hover:text-text-main mt-2 pt-6 border-t border-border-subtle"
+              >
+                {theme === 'dark' ? <Sun size={20} strokeWidth={1.5} /> : <Moon size={20} strokeWidth={1.5} />}
+                {theme === 'dark' ? 'Light Mode' : 'Dark Mode'}
+              </button>
             </div>
           </motion.div>
         )}

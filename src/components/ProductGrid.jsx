@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
 import { ArrowUpRight, ShoppingBag } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { useCart } from '../contexts/CartContext';
 import data from '../data/data.json';
 const { products: allProducts } = data;
 
@@ -11,6 +12,7 @@ export default function ProductGrid({
   products = allProducts,
   showHeader = true,
 }) {
+  const { addToCart } = useCart();
   const displayProducts = limit ? products.slice(0, limit) : products;
 
   return (
@@ -65,7 +67,10 @@ export default function ProductGrid({
                     <ArrowUpRight className="h-3 w-3 sm:h-[17px] sm:w-[17px]" />
                   </div>
                   <div className="absolute inset-x-0 bottom-0 p-2 sm:p-4 translate-y-3 opacity-0 transition duration-500 ease-out group-hover:translate-y-0 group-hover:opacity-100 hidden sm:block">
-                    <button className="flex w-full items-center justify-center gap-2 rounded-full bg-text-main px-5 py-3 text-sm font-bold uppercase tracking-[0.18em] text-bg-primary transition hover:opacity-90">
+                    <button 
+                      onClick={(e) => { e.preventDefault(); addToCart(product); }}
+                      className="flex w-full items-center justify-center gap-2 rounded-full bg-text-main px-5 py-3 text-sm font-bold uppercase tracking-[0.18em] text-bg-primary transition hover:opacity-90"
+                    >
                       <ShoppingBag size={16} /> Quick Add
                     </button>
                   </div>
