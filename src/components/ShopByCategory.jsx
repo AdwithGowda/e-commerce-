@@ -43,7 +43,7 @@ export default function ShopByCategory() {
                   whileInView={{ opacity: 1, scale: 1 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.6, delay: idx * 0.1, ease: [0.21, 0.47, 0.32, 0.98] }}
-                  className="relative flex aspect-square w-20 sm:w-24 md:w-28 lg:w-32 items-center justify-center overflow-hidden rounded-full transition-all duration-500 group-hover:-translate-y-1.5 bg-transparent shadow-[0_0_20px_rgba(79,70,229,0.25)] dark:shadow-[0_0_20px_rgba(79,70,229,0.4)]"
+                  className="relative flex aspect-square w-20 sm:w-24 md:w-28 lg:w-32 items-center justify-center overflow-hidden rounded-full border border-black/250 dark:border-white/250 transition-all duration-500 group-hover:-translate-y-1.5 bg-transparent shadow-[0_0_20px_rgba(0,0,0,0.25)] dark:shadow-[0_0_20px_rgba(255,255,255,0.25)]"
                 >
                   {IconComponent ? (
                     <div className="absolute inset-0 z-10 flex items-center justify-center bg-transparent transition-transform duration-500 group-hover:scale-110">
