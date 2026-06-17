@@ -1,8 +1,9 @@
 import React, { useRef, useEffect } from 'react';
 import { useTheme } from './ThemeProvider';
-import { Shirt, Watch, Footprints, Briefcase, Settings, Glasses } from 'lucide-react';
+import { FaTshirt, FaShoePrints, FaBriefcase, FaCog, FaGlasses, FaDog } from "react-icons/fa";
+import { PiWatchFill } from "react-icons/pi";
 
-const icons = [Shirt, Watch, Footprints, Briefcase, Settings, Glasses];
+const icons = [FaTshirt, PiWatchFill, FaShoePrints, FaBriefcase, FaCog, FaGlasses];
 
 const FooterAnimation = () => {
   const containerRef = useRef(null);
@@ -164,22 +165,23 @@ const FooterAnimation = () => {
         }}
       />
 
-      {/* Ball */}
+      {/* Dog (formerly Ball) */}
       <div 
         ref={ballRef}
         style={{
           position: 'absolute',
           bottom: '17px',
-          width: '24px',
-          height: '24px',
-          borderRadius: '50%',
-          backgroundColor: fgColor,
-          marginLeft: '-12px', // Centers the div on the calculated X position
+          width: '48px',
+          height: '48px',
+          color: fgColor,
+          marginLeft: '-24px', // Centers the div on the calculated X position
           zIndex: 10,
           willChange: 'transform',
-          transition: 'background-color 0.3s ease'
+          transition: 'color 0.3s ease'
         }}
-      />
+      >
+        <FaDog size={48} />
+      </div>
 
       {/* Obstacle Icons */}
       {obstaclesData.current.map((ob) => (
@@ -198,7 +200,7 @@ const FooterAnimation = () => {
             transition: 'color 0.3s ease'
           }}
         >
-          <ob.Icon size={48} strokeWidth={1.5} />
+          <ob.Icon size={48} />
         </div>
       ))}
     </div>
