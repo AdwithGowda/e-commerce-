@@ -2,6 +2,7 @@ import ProductGrid from '../components/ProductGrid';
 import data from '../data/data.json';
 import { Link, useLocation } from 'react-router-dom';
 import { motion } from 'framer-motion';
+import videoBg from '../assets/AG_shop.mp4';
 
 export default function Shop() {
   const location = useLocation();
@@ -21,9 +22,17 @@ export default function Shop() {
   return (
     <main className="min-h-screen bg-bg-primary">
       <section className="relative isolate min-h-[62vh] overflow-hidden px-6 pt-32 pb-16">
-        <img
+        {/* <img
           src={heroImage}
           alt={title}
+          className="absolute inset-0 h-full w-full object-cover opacity-35"
+        /> */}
+        <video
+          src={videoBg}
+          autoPlay
+          loop
+          muted
+          playsInline
           className="absolute inset-0 -z-20 h-full w-full object-cover opacity-35"
         />
         <div className="absolute inset-0 -z-10 bg-gradient-to-r from-bg-primary via-bg-primary/70 to-bg-primary/30" />
