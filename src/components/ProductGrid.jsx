@@ -19,7 +19,7 @@ export default function ProductGrid({
     <section className="px-6 py-8 md:py-12">
       <div className="mx-auto max-w-7xl">
         {showHeader && (
-          <div className="mb-12 flex flex-col gap-4 border-t border-border-subtle pt-8 md:flex-row md:items-end md:justify-between">
+          <div className="mb-12 flex flex-col gap-4 border-t border-border-subtle pt-12 md:flex-row md:items-end md:justify-between">
             <div>
               <p className="mb-3 text-xs font-semibold uppercase tracking-[0.35em] text-text-muted">
                 Latest Drop

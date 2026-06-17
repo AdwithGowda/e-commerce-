@@ -1,14 +1,23 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { ArrowRight } from 'lucide-react';
+import { ArrowRight, Shirt, Watch, Footprints, Briefcase, Settings, Glasses } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import data from '../data/data.json';
 
 const { categories } = data;
 
+const iconMap = {
+  clothing: Shirt,
+  watches: Watch,
+  shoes: Footprints,
+  bags: Briefcase,
+  gear: Settings,
+  eyewear: Glasses
+};
+
 export default function ShopByCategory() {
   return (
-    <section className="px-6 py-16 md:py-24">
+    <section className="px-6 pt-16 pb-4 md:pt-24 md:pb-8">
       <div className="mx-auto max-w-7xl">
         <div className="mb-12 flex items-baseline justify-between border-b border-black/10 dark:border-white/10 pb-5">
           <h2 className="text-2xl font-heading font-bold uppercase tracking-tight text-text-main md:text-3xl">
@@ -22,6 +31,7 @@ export default function ShopByCategory() {
         {/* Category Scroll/Grid */}
         <div className="flex w-full gap-6 overflow-x-auto pb-8 pt-4 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden md:grid md:grid-cols-6 md:gap-8 md:overflow-visible lg:flex lg:justify-between lg:gap-10">
           {categories.map((cat, idx) => {
+            const IconComponent = iconMap[cat.id];
             return (
               <Link 
                 key={cat.id} 
@@ -33,9 +43,13 @@ export default function ShopByCategory() {
                   whileInView={{ opacity: 1, scale: 1 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.6, delay: idx * 0.1, ease: [0.21, 0.47, 0.32, 0.98] }}
-                  className="relative flex aspect-[4/5] w-32 sm:w-36 md:w-full lg:w-44 items-center justify-center overflow-hidden rounded-xl border border-black/5 dark:border-white/5 bg-[#FAFAFA] dark:bg-zinc-900 shadow-[0_8px_24px_rgba(0,0,0,0.04)] dark:shadow-[0_8px_24px_rgba(0,0,0,0.4)] transition-all duration-500 group-hover:-translate-y-1.5 group-hover:shadow-[0_12px_32px_rgba(0,0,0,0.08)] dark:group-hover:shadow-[0_12px_32px_rgba(255,255,255,0.05)]"
+                  className="relative flex aspect-square w-20 sm:w-24 md:w-28 lg:w-32 items-center justify-center overflow-hidden rounded-full transition-all duration-500 group-hover:-translate-y-1.5 bg-transparent shadow-[0_0_20px_rgba(79,70,229,0.25)] dark:shadow-[0_0_20px_rgba(79,70,229,0.4)]"
                 >
-                  {cat.image ? (
+                  {IconComponent ? (
+                    <div className="absolute inset-0 z-10 flex items-center justify-center bg-transparent transition-transform duration-500 group-hover:scale-110">
+                      <IconComponent size={48} strokeWidth={1.5} className="text-text-main opacity-80 transition-opacity duration-500 group-hover:opacity-100" />
+                    </div>
+                  ) : cat.image ? (
                     <>
                       <img 
                         src={cat.image} 
