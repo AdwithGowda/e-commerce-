@@ -33,9 +33,9 @@ export default function Shop() {
           loop
           muted
           playsInline
-          className="absolute inset-0 -z-20 h-full w-full object-cover opacity-35"
+          className="absolute inset-0 -z-20 h-full w-full object-cover opacity-75"
         />
-        <div className="absolute inset-0 -z-10 bg-gradient-to-r from-bg-primary via-bg-primary/70 to-bg-primary/30" />
+        <div className="absolute inset-0 -z-10 bg-gradient-to-r from-bg-primary/90 via-bg-primary/60 to-bg-primary/20" />
         <div className="absolute left-0 top-20 -z-10 h-[34rem] w-[48rem] bg-text-main opacity-5 blur-3xl" />
         <div className="absolute inset-x-0 bottom-0 -z-10 h-40 bg-gradient-to-t from-bg-primary to-transparent" />
         <div className="absolute bottom-16 right-6 top-32 hidden items-center xl:flex">
