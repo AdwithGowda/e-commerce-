@@ -5,6 +5,7 @@ import Home from './pages/Home';
 import Shop from './pages/Shop';
 import ProductDetail from './pages/ProductDetail';
 import { CartProvider } from './contexts/CartContext';
+import { WishlistProvider } from './contexts/WishlistContext';
 import CartDrawer from './components/CartDrawer';
 import ProfileSection from './components/ProfileSection';
 
@@ -33,22 +34,24 @@ import IntroSplash from './components/IntroSplash';
 function App() {
   return (
     <ThemeProvider>
-      <CartProvider>
-        <IntroSplash />
-        <Router>
-          <ScrollToTop />
-          <Navbar />
-          <CartDrawer />
-          <div className="min-h-screen font-body selection:bg-accent selection:text-white">
-            <Routes>
-              <Route path="/" element={<Home />} />
-              <Route path="/shop" element={<Shop />} />
-              <Route path="/product/:id" element={<ProductDetail />} />
-              <Route path="/profile" element={<ProfileSection />} />
-            </Routes>
-          </div>
-        </Router>
-      </CartProvider>
+      <WishlistProvider>
+        <CartProvider>
+          <IntroSplash />
+          <Router>
+            <ScrollToTop />
+            <Navbar />
+            <CartDrawer />
+            <div className="min-h-screen font-body selection:bg-accent selection:text-white">
+              <Routes>
+                <Route path="/" element={<Home />} />
+                <Route path="/shop" element={<Shop />} />
+                <Route path="/product/:id" element={<ProductDetail />} />
+                <Route path="/profile" element={<ProfileSection />} />
+              </Routes>
+            </div>
+          </Router>
+        </CartProvider>
+      </WishlistProvider>
     </ThemeProvider>
   );
 }

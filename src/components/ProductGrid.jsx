@@ -1,7 +1,8 @@
 import { motion } from 'framer-motion';
-import { ArrowUpRight, ShoppingBag } from 'lucide-react';
+import { ArrowUpRight, ShoppingBag, Heart } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { useCart } from '../contexts/CartContext';
+import { useWishlist } from '../contexts/WishlistContext';
 import data from '../data/data.json';
 const { products: allProducts } = data;
 
@@ -13,6 +14,7 @@ export default function ProductGrid({
   showHeader = true,
 }) {
   const { addToCart } = useCart();
+  const { toggleWishlist, isInWishlist } = useWishlist();
   const displayProducts = limit ? products.slice(0, limit) : products;
 
   return (
@@ -63,8 +65,16 @@ export default function ProductGrid({
                   <div className="absolute left-2 top-2 sm:left-4 sm:top-4 rounded-full border border-white/20 bg-black/35 px-2 py-0.5 sm:px-3 sm:py-1 text-[8px] sm:text-[10px] font-semibold uppercase tracking-[0.22em] text-white/80 backdrop-blur">
                     Atelier Pick
                   </div>
-                  <div className="absolute right-2 top-2 sm:right-4 sm:top-4 flex h-7 w-7 sm:h-10 sm:w-10 items-center justify-center rounded-full border border-white/15 bg-black/30 text-white backdrop-blur transition group-hover:bg-text-main group-hover:text-bg-primary">
-                    <ArrowUpRight className="h-3 w-3 sm:h-[17px] sm:w-[17px]" />
+                  <div className="absolute right-2 top-2 sm:right-4 sm:top-4 flex flex-col gap-2">
+                    <button 
+                      onClick={(e) => { e.preventDefault(); toggleWishlist(product); }}
+                      className={`flex h-7 w-7 sm:h-10 sm:w-10 items-center justify-center rounded-full border backdrop-blur transition hover:scale-110 ${isInWishlist(product.id) ? 'bg-bg-surface/90 border-text-main text-text-main' : 'bg-black/30 border-white/15 text-white hover:bg-bg-surface hover:text-text-main hover:border-text-main'}`}
+                    >
+                      <Heart className="h-3 w-3 sm:h-[18px] sm:w-[18px]" fill={isInWishlist(product.id) ? "currentColor" : "none"} />
+                    </button>
+                    <div className="flex h-7 w-7 sm:h-10 sm:w-10 items-center justify-center rounded-full border border-white/15 bg-black/30 text-white backdrop-blur transition group-hover:bg-text-main group-hover:text-bg-primary">
+                      <ArrowUpRight className="h-3 w-3 sm:h-[17px] sm:w-[17px]" />
+                    </div>
                   </div>
                   <div className="absolute inset-x-0 bottom-0 p-2 sm:p-4 translate-y-3 opacity-0 transition duration-500 ease-out group-hover:translate-y-0 group-hover:opacity-100 hidden sm:block">
                     <button 

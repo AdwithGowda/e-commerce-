@@ -1,5 +1,8 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { Link } from 'react-router-dom';
+import { useWishlist } from '../contexts/WishlistContext';
+import { useCart } from '../contexts/CartContext';
 import { 
   User, 
   Settings, 
@@ -11,11 +14,14 @@ import {
   Camera,
   ChevronRight,
   ShieldCheck,
-  Package
+  Package,
+  X
 } from 'lucide-react';
 
 const ProfileSection = () => {
-  const [activeTab, setActiveTab] = useState('profile');
+  const [activeTab, setActiveTab] = useState('orders');
+  const { wishlistItems, removeFromWishlist } = useWishlist();
+  const { addToCart } = useCart();
 
   const menuItems = [
     { id: 'profile', icon: <User className="w-5 h-5" />, label: 'Profile Details', mobileLabel: 'Profile' },
@@ -28,7 +34,7 @@ const ProfileSection = () => {
 
   return (
     <div className="min-h-screen bg-bg-primary pt-28 pb-32 lg:pb-16 px-4 sm:px-6 lg:px-8 font-body text-text-main transition-colors duration-300">
-      <div className="max-w-[1200px] mx-auto relative z-10">
+      <div className="max-w-[1400px] mx-auto relative z-10">
         
         {/* Page Header */}
         <div className="mb-8 flex justify-between items-start">
@@ -51,7 +57,7 @@ const ProfileSection = () => {
           </div>
         </div>
 
-        <div className="flex flex-col lg:flex-row gap-8 items-stretch">
+        <div className="flex flex-col lg:flex-row gap-8 items-stretch lg:h-[calc(100vh-230px)] lg:min-h-[600px]">
           
           {/* Sidebar Navigation (Desktop Only) */}
           <div className="hidden lg:flex w-full lg:w-80 flex-shrink-0 flex-col">
@@ -117,7 +123,7 @@ const ProfileSection = () => {
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -10 }}
                   transition={{ duration: 0.3 }}
-                  className="h-full"
+                  className="h-full overflow-y-auto custom-scrollbar"
                 >
                   {activeTab === 'profile' ? (
                     <div className="p-6 md:p-10">
@@ -199,6 +205,44 @@ const ProfileSection = () => {
                         </div>
                       </div>
 
+                    </div>
+                  ) : activeTab === 'wishlist' && wishlistItems.length > 0 ? (
+                    <div className="p-6 md:p-10">
+                      <h2 className="text-2xl font-heading font-bold mb-8 text-text-main">My Wishlist</h2>
+                      <div className="grid grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-6">
+                        {wishlistItems.map((product) => (
+                          <div key={product.id} className="group relative flex flex-col h-full border border-border-subtle rounded-2xl overflow-hidden bg-bg-surface hover:border-text-muted transition-colors">
+                            <Link to={`/product/${product.id}`} className="aspect-square relative overflow-hidden bg-bg-primary">
+                              <img src={product.primaryImage} alt={product.name} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
+                            </Link>
+                            
+                            <button 
+                              onClick={(e) => { e.preventDefault(); removeFromWishlist(product.id); }}
+                              className="absolute top-2 right-2 sm:top-3 sm:right-3 p-1.5 sm:p-2 bg-bg-surface/80 backdrop-blur rounded-full border border-border-subtle text-text-muted hover:text-red-500 hover:border-red-500 transition-colors"
+                            >
+                              <X className="w-3 h-3 sm:w-4 sm:h-4" />
+                            </button>
+
+                            <div className="p-3 sm:p-4 flex flex-col flex-1">
+                              <div className="flex items-center justify-between mb-1">
+                                <p className="text-[9px] sm:text-[10px] font-semibold uppercase tracking-wider text-text-muted truncate mr-1">{product.category}</p>
+                                <span className="text-xs sm:text-sm font-semibold text-text-main shrink-0">₹{product.price}</span>
+                              </div>
+                              <Link to={`/product/${product.id}`}>
+                                <h3 className="text-xs sm:text-base font-medium text-text-main group-hover:text-text-muted transition-colors truncate mb-3 sm:mb-4">{product.name}</h3>
+                              </Link>
+                              <div className="mt-auto">
+                                <button 
+                                  onClick={() => addToCart(product)}
+                                  className="w-full py-2 sm:py-2.5 bg-bg-primary border border-border-subtle rounded-xl text-[10px] sm:text-sm font-bold uppercase tracking-wider text-text-main hover:bg-text-main hover:text-bg-primary transition-colors flex items-center justify-center gap-1.5 sm:gap-2"
+                                >
+                                  <ShoppingBag className="w-3 h-3 sm:w-3.5 sm:h-3.5" /> <span className="hidden sm:inline">Add to Cart</span><span className="sm:hidden">Add</span>
+                                </button>
+                              </div>
+                            </div>
+                          </div>
+                        ))}
+                      </div>
                     </div>
                   ) : (
                     <div className="p-6 md:p-10 min-h-[400px] md:min-h-[500px] flex items-center justify-center">

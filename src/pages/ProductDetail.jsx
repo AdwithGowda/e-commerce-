@@ -5,12 +5,14 @@ const { products } = data;
 import { ArrowLeft, ShoppingCart, Heart } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { useCart } from '../contexts/CartContext';
+import { useWishlist } from '../contexts/WishlistContext';
 
 export default function ProductDetail() {
   const { id } = useParams();
   const product = products.find(p => p.id === parseInt(id));
   
   const { addToCart } = useCart();
+  const { toggleWishlist, isInWishlist } = useWishlist();
   const [activeImage, setActiveImage] = useState(product?.primaryImage);
   const [selectedSize, setSelectedSize] = useState(null);
   const [showError, setShowError] = useState(false);
@@ -125,8 +127,12 @@ export default function ProductDetail() {
                 >
                   ADD TO CART
                 </button>
-                <button className="w-full border border-border-subtle text-text-main font-bold uppercase tracking-[0.1em] py-4 rounded-none flex justify-center items-center hover:border-text-main transition-colors text-xs sm:text-sm">
-                  WISHLIST
+                <button 
+                  onClick={() => toggleWishlist(product)}
+                  className={`w-full border font-bold uppercase tracking-[0.1em] py-4 rounded-none flex justify-center gap-2 items-center transition-colors text-xs sm:text-sm ${isInWishlist(product.id) ? 'border-text-main bg-text-main text-bg-primary' : 'border-border-subtle text-text-main hover:border-text-main'}`}
+                >
+                  <Heart size={16} fill={isInWishlist(product.id) ? "currentColor" : "none"} />
+                  {isInWishlist(product.id) ? 'WISHLISTED' : 'WISHLIST'}
                 </button>
               </div>
             </div>
