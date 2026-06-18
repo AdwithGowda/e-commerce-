@@ -66,7 +66,7 @@ export default function Hero() {
           <motion.div variants={itemVariants} className="mt-8 flex w-full flex-col items-center gap-4 sm:mt-9 sm:gap-5">
             <Link
               to="/shop"
-              className="group inline-flex min-h-[2.75rem] w-full items-center justify-center gap-3 rounded-full border border-text-main bg-text-main px-4 text-[11px] font-bold uppercase tracking-[0.18em] text-bg-primary shadow-xl shadow-black/10 transition duration-300 hover:bg-bg-primary hover:text-text-main sm:min-h-14 sm:w-auto sm:gap-4 sm:px-9 sm:text-xs sm:tracking-[0.22em]"
+              className="group inline-flex min-h-[2.75rem] w-fit items-center justify-center gap-3 rounded-full border border-text-main bg-text-main px-8 text-[11px] font-bold uppercase tracking-[0.18em] text-bg-primary shadow-xl shadow-black/10 transition duration-300 hover:bg-bg-primary hover:text-text-main sm:min-h-14 sm:w-auto sm:gap-4 sm:px-9 sm:text-xs sm:tracking-[0.22em]"
             >
               Explore Collection
               <ArrowRight size={18} className="transition-transform group-hover:translate-x-1" />
