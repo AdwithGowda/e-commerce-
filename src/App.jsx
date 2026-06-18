@@ -6,6 +6,7 @@ import Shop from './pages/Shop';
 import ProductDetail from './pages/ProductDetail';
 import { CartProvider } from './contexts/CartContext';
 import CartDrawer from './components/CartDrawer';
+import ProfileSection from './components/ProfileSection';
 
 // Helper to scroll to top on route change
 function ScrollToTop() {
@@ -43,6 +44,7 @@ function App() {
               <Route path="/" element={<Home />} />
               <Route path="/shop" element={<Shop />} />
               <Route path="/product/:id" element={<ProductDetail />} />
+              <Route path="/profile" element={<ProfileSection />} />
             </Routes>
           </div>
         </Router>
