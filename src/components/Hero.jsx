@@ -91,11 +91,9 @@ export default function Hero() {
               <div className="mt-2 flex flex-col items-start sm:mt-4">
                 <p className="flex flex-col font-heading font-extrabold uppercase leading-none tracking-tight text-black/90 dark:drop-shadow-lg dark:text-white/90">
                   <span className="text-2xl sm:text-4xl">ALPHA</span>
-                  <span className="text-xl sm:text-2xl">GOODS</span>
+                  <span className="pl-6 text-xl sm:text-2xl">GOODS</span>
                 </p>
-                <p className="mt-1.5 text-[10px] font-medium leading-snug text-black/70 dark:drop-shadow-md dark:text-white/80 sm:mt-2 sm:text-xs">
-                  Built for every<br />adventure
-                </p>
+
               </div>
             </div>
             <video
