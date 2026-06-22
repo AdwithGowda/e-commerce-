@@ -25,12 +25,12 @@ export default function Hero() {
     <section className="relative isolate w-full overflow-hidden bg-bg-primary dark:bg-black pt-20 text-text-main sm:pt-44 lg:pt-32 min-h-[100svh] flex flex-col justify-center">
       {/* Light Theme Background */}
       <div 
-        className="absolute inset-0 scale-110 translate-y-4 sm:translate-y-8 -z-30 bg-cover bg-center bg-no-repeat opacity-15 blur-[2px] mix-blend-multiply dark:hidden"
+        className="absolute inset-x-0 -top-24 -bottom-24 sm:inset-0 scale-110 translate-y-4 sm:translate-y-8 -z-30 bg-cover bg-center bg-no-repeat opacity-15 blur-[2px] mix-blend-multiply dark:hidden"
         style={{ backgroundImage: 'url("/images/world_map_bg_light.png")' }}
       />
       {/* Dark Theme Background */}
       <div 
-        className="absolute inset-0 scale-110 translate-y-4 sm:translate-y-8 -z-30 hidden bg-cover bg-center bg-no-repeat opacity-25 blur-[2px] mix-blend-screen dark:block"
+        className="absolute inset-x-0 -top-24 -bottom-24 sm:inset-0 scale-110 translate-y-4 sm:translate-y-8 -z-30 hidden bg-cover bg-center bg-no-repeat opacity-25 blur-[2px] mix-blend-screen dark:block"
         style={{ backgroundImage: 'url("/images/world_map_bg.png")' }}
       />
       {/* Base Gradient (Behind Maps) */}
