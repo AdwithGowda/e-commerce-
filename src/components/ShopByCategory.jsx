@@ -51,7 +51,7 @@ export default function ShopByCategory() {
               <Link 
                 key={cat.id} 
                 to={cat.link}
-                className="group relative flex aspect-[2/3] w-[30vw] min-w-[120px] flex-shrink-0 snap-start flex-col items-center justify-end overflow-hidden rounded-2xl border border-black/10 dark:border-white/10 bg-white dark:bg-[#0a0a0a] transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_8px_20px_rgba(0,0,0,0.04)] dark:hover:shadow-[0_8px_30px_rgba(255,255,255,0.05)] sm:w-[180px] sm:min-w-[180px] lg:w-full lg:min-w-0 lg:snap-align-none"
+                className="group relative flex aspect-[2/3] w-[30vw] min-w-[120px] flex-shrink-0 snap-start flex-col justify-end overflow-hidden rounded-2xl border border-black/10 dark:border-white/10 bg-[#0a0a0a] transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_8px_20px_rgba(0,0,0,0.04)] dark:hover:shadow-[0_8px_30px_rgba(255,255,255,0.05)] sm:w-[180px] sm:min-w-[180px] lg:w-full lg:min-w-0 lg:snap-align-none"
               >
                 {/* Background Image & Gradient */}
                 {cat.image && (
@@ -59,37 +59,33 @@ export default function ShopByCategory() {
                     <img 
                       src={cat.image} 
                       alt={cat.name} 
-                      className="absolute inset-0 h-full w-full object-cover opacity-40 dark:opacity-60 mix-blend-multiply dark:mix-blend-normal grayscale transition-transform duration-700 group-hover:scale-110"
+                      className="absolute inset-0 h-full w-full object-cover opacity-70 transition-transform duration-700 group-hover:scale-110"
                     />
-                    {/* The gradient fading from transparent to the card's background color */}
-                    <div className="absolute inset-0 bg-gradient-to-b from-transparent via-white/30 to-white dark:via-[#0a0a0a]/90 dark:to-[#0a0a0a] transition-opacity duration-500" />
+                    {/* Gradient fading from transparent to black at the bottom for text legibility */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent transition-opacity duration-500" />
                   </>
                 )}
 
-                {/* Bottom Glow effect */}
-                <div className="absolute bottom-0 left-1/2 h-[1px] w-3/4 -translate-x-1/2 bg-gradient-to-r from-transparent via-black/15 dark:via-white/40 to-transparent opacity-50 transition-opacity duration-500 group-hover:opacity-100 group-hover:via-black/30 dark:group-hover:via-white/80" />
-                <div className="absolute bottom-0 left-1/2 h-8 w-3/4 -translate-x-1/2 bg-black/5 dark:bg-white/10 opacity-0 blur-2xl transition-opacity duration-500 group-hover:opacity-100" />
-
                 {/* Content */}
-                <div className="relative z-10 flex w-full flex-col items-center pb-8">
-                  {/* Icon Circle */}
+                <div className="relative z-10 flex w-full flex-col items-start p-4 md:p-5">
+                  {/* Icon */}
                   <motion.div 
                     initial={{ opacity: 0, y: 10 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.5, delay: idx * 0.1 }}
-                    className="relative mb-8 flex h-20 w-20 items-center justify-center rounded-full border border-black/20 dark:border-white/20 bg-black/5 dark:bg-white/5 backdrop-blur-md transition-all duration-500 group-hover:border-black/40 dark:group-hover:border-white/40 group-hover:bg-black/10 dark:group-hover:bg-white/10 group-hover:shadow-[0_0_15px_rgba(0,0,0,0.05)] dark:group-hover:shadow-[0_0_20px_rgba(255,255,255,0.1)]"
+                    className="mb-3"
                   >
-                    {/* Inner subtle glow on hover */}
-                    <div className="absolute inset-0 rounded-full bg-text-main opacity-0 blur-md transition-opacity duration-500 group-hover:opacity-20" />
                     {IconComponent && (
-                      <IconComponent size={30} strokeWidth={1.5} className="relative z-10 text-text-main" />
+                      <IconComponent size={24} strokeWidth={1.5} className="text-white" />
                     )}
                   </motion.div>
 
-                  <h3 className="mb-2 text-sm font-bold uppercase tracking-widest text-text-main">
+                  <h3 className="mb-2 text-sm font-bold uppercase tracking-widest text-white md:text-base">
                     {cat.name}
                   </h3>
+                  
+                  <ArrowRight size={16} className="text-white transition-transform duration-300 group-hover:translate-x-2" />
                 </div>
               </Link>
             );
