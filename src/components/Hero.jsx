@@ -32,7 +32,7 @@ export default function Hero() {
         
         {/* Left Column: Text Content */}
         <motion.div
-          className="relative z-20 flex w-full lg:w-1/2 flex-col items-center text-center lg:items-start lg:text-left mt-2 sm:mt-12 lg:mt-0 lg:pr-10 xl:pr-12"
+          className="relative z-20 flex w-full lg:w-1/2 flex-col items-center text-center lg:items-start lg:text-left mt-[10vh] sm:mt-12 lg:mt-0 lg:pr-10 xl:pr-12"
           variants={containerVariants}
           initial="hidden"
           animate="visible"
