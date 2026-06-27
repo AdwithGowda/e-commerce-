@@ -17,7 +17,7 @@ const iconMap = {
 
 export default function ShopByCategory() {
   return (
-    <section className="bg-bg-primary dark:bg-[#050505] px-4 py-20 sm:px-6 md:py-32">
+    <section className="bg-bg-primary dark:bg-black px-4 py-20 sm:px-6 md:py-32">
       <div className="mx-auto max-w-[90rem] xl:px-12">
         
         {/* Header Section */}

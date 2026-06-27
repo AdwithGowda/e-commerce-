@@ -36,8 +36,8 @@
   }
 
   .dark {
-    --bg-primary: #0B0C10;
-    --bg-surface: #1A1A24;
+    --bg-primary: #000000;
+    --bg-surface: #0A0A0A;
     --text-main: #FFFFFF;
     --text-muted: rgba(255, 255, 255, 0.6);
     --border-subtle: rgba(255, 255, 255, 0.1);
@@ -82,6 +82,6 @@
     border-bottom: 1px solid var(--border-subtle);
   }
   .dark .glass-nav {
-    background: rgba(11, 12, 16, 0.7);
+    background: rgba(0, 0, 0, 0.7);
   }
 }
